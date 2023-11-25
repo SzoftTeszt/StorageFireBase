@@ -13,6 +13,10 @@ export class BaseService {
     this.dbRef=this.db.list(this.basePath)
   }
 
+  getData(){
+    return this.dbRef
+  }
+
   addFileData(fname:any, fsUrl:any){
     const data= {name:fname, url:fsUrl}
     this.dbRef.push(data)
