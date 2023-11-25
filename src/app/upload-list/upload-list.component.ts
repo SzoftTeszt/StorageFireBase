@@ -23,4 +23,8 @@ export class UploadListComponent {
       }
     )
   }
+
+  deleteFile(f:any){
+    this.base.deleteFile(f)
+  }
 }

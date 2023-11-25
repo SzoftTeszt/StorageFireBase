@@ -10,19 +10,27 @@ import { AppComponent } from './app.component';
 import { UploadListComponent } from './upload-list/upload-list.component';
 import { UploadFormComponent } from './upload-form/upload-form.component';
 import { Environments } from './environments';
+import { FormsModule } from '@angular/forms';
+import { NavComponent } from './nav/nav.component';
+import { HomeComponent } from './home/home.component';
+import { ProductsListComponent } from './products-list/products-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UploadListComponent,
-    UploadFormComponent
+    UploadFormComponent,
+    NavComponent,
+    HomeComponent,
+    ProductsListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     AngularFireModule.initializeApp(Environments.firebaseConfig),
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

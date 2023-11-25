@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { BaseService } from '../base.service';
+import { Produts } from '../product';
 
 @Component({
   selector: 'app-upload-form',
@@ -11,22 +12,43 @@ export class UploadFormComponent {
   upload=false
   percentage=0
 
-  constructor(private base:BaseService){}
+  newProduct:any={}
 
-  selectFile(event:any){
-    console.log(event.target.files[0])
-    this.selectedFile=event.target.files[0]
-    this.upload=false
-    this.percentage=0
-  }
-  uploadFile(){
-    console.log("Én fogom feltölteni a filet!", this.selectedFile)
-    this.upload=true
-    this.base.pushFile(this.selectedFile).subscribe(
-      (res)=>{
-        console.log(res,"%")
-        this.percentage=Math.round(Number(res))
+  constructor(private base:BaseService){
+    this.newProduct.imagesUrl=[]
+    this.base.getUrlSubject().subscribe(
+      (url:any)=> {
+        console.log("Subject")
+        this.newProduct.imagesUrl?.push(url)
+        console.log(this.newProduct.imagesUrl)
       }
     )
   }
+
+  selectFile(event:any){
+    console.log(event.target.files)
+    this.selectedFile=event.target.files
+    this.upload=false
+    this.percentage=0
+  }
+  uploadFile(){   
+    this.upload=true
+    Array.from(this.selectedFile).forEach((element:any) => {
+      this.base.pushImage(element).subscribe(
+        (res)=>{
+          console.log(res,"%")
+          this.percentage=Math.round(Number(res))
+        })
+    }) 
+  }
+
+
+  addProduct(){
+    console.log(this.newProduct)
+    this.base.addProduct(this.newProduct)
+    this.newProduct={}
+    this.newProduct.imagesUrl=[]
+  }
+
+
 }
