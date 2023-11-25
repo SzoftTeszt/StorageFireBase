@@ -1,0 +1,8 @@
+<div class="row mb-3">
+    <div class="col-6">
+        <label for="formFile" class="form-label">Default file input example</label>
+        <input (change)="selectFile($event)" class="form-control" type="file" id="formFile">
+        <button (click)="uploadFile()" [disabled]="!selectedFile" type="button" class="btn btn-primary my-3">Feltöltés</button>
+    </div>
+  
+</div>
