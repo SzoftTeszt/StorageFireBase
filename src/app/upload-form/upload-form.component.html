@@ -6,3 +6,8 @@
     </div>
   
 </div>
+<div *ngIf="upload" class="row">
+    <div class="progress" role="progressbar" aria-label="Animated striped example" [attr.aria-valuenow]="percentage" aria-valuemin="0" aria-valuemax="100">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" [ngStyle]="{'width':percentage+'%'}"></div>
+      </div>
+</div>
