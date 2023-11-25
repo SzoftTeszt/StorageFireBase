@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { finalize } from 'rxjs';
 
 @Injectable({
@@ -7,8 +8,16 @@ import { finalize } from 'rxjs';
 })
 export class BaseService {
   basePath="/feltolt"
+  dbRef:any
+  constructor(private storage:AngularFireStorage, private db: AngularFireDatabase) {
+    this.dbRef=this.db.list(this.basePath)
+  }
 
-  constructor(private storage:AngularFireStorage) { }
+  addFileData(fname:any, fsUrl:any){
+    const data= {name:fname, url:fsUrl}
+    this.dbRef.push(data)
+
+  }
 
   pushFile(file:any){
     const fullPath=this.basePath+"/"+file.name
@@ -20,7 +29,10 @@ export class BaseService {
       finalize(
         ()=>{
           storegeRef.getDownloadURL().subscribe(
-            (url)=>console.log(url)
+            (url)=>{
+              this.addFileData(file.name,url)
+              // console.log(url)
+            }
           )
       }
       )
