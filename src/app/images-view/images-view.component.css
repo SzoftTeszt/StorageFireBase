@@ -1,0 +1,29 @@
+img{
+    max-width: 100%;
+}
+.tape img{
+    user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    width:25%;
+}
+.tape{
+    position: relative;
+}
+.arrows{
+    
+    position:absolute;
+    top:0;
+    bottom:0;
+    width:15px;    
+    border-radius: 5px;
+}
+.arrows:hover{
+    background: rgba(0,0,0,.2);
+}
+.arrows.right{
+    right:0px;
+}

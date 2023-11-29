@@ -14,6 +14,8 @@ import { FormsModule } from '@angular/forms';
 import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { ProductsListComponent } from './products-list/products-list.component';
+import { TeniszutoComponent } from './teniszuto/teniszuto.component';
+import { ImagesViewComponent } from './images-view/images-view.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { ProductsListComponent } from './products-list/products-list.component';
     UploadFormComponent,
     NavComponent,
     HomeComponent,
-    ProductsListComponent
+    ProductsListComponent,
+    TeniszutoComponent,
+    ImagesViewComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,7 @@
+<img [src]="urls[0]">
+
+<div class="tape">
+    <div *ngIf="tombIndex>0" (click)="left()" class="arrows left"></div>
+    <img *ngFor="let url of viewUrls" [src]="url">
+    <div *ngIf="tombIndex<(urls.length-4)"(click)="right()" class="arrows right"></div>
+</div>
